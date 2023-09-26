@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-image: linear-gradient(rgba(251, 251, 135, 0.659),rgba(240, 156, 240, 0.856));
+        }
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        label {
+            flex: 1;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="checkbox"],
+        select {
+            flex: 2;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        textarea {
+            flex: 2;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 700px;
+        }
+
+        .poor-feedback {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 align="center" style="color: blue">Registration Form</h2>       
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <span id="firstNameFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <span id="lastNameFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span id="emailFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span id="passwordFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="rePassword">Re-enter Password:</label>
+                <input type="password" id="rePassword" name="rePassword" required>
+                <span id="rePasswordFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age">
+                <span id="ageFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber">
+                <span id="phoneNumberFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address"></textarea>
+                <span id="addressFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state">
+                <span id="stateFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country">
+                <span id="countryFeedback" class="poor-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label for="languages">Languages known:</label>
+                <input type="checkbox" id="english" name="languages" value="English">
+                <label for="english">English</label>
+                <input type="checkbox" id="kannada" name="languages" value="Kannada">
+                <label for="kannada">Kannada</label>
+                <input type="checkbox" id="hindi" name="languages" value="Hindi">
+                <label for="hindi">Hindi</label>
+                <input type="checkbox" id="telugu" name="languages" value="Telugu">
+                <label for="telugu">Telugu</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="declaration" required>
+                <label for="declaration">Hereby I declare all the given details are true</label>
+            </div>
+            <div class="form-group">
+                <p>Log in to
+                    <a href="https://www.ethnus.com" target="_blank">Ethnus</a> Website
+                </p>
+            </div>           
+        </form>
+        <button align="center" type="submit" style="margin-left: 200px; background-color: red; border-radius: 10px;">Register</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const firstNameInput = document.getElementById("firstName");
+            const firstNameFeedback = document.getElementById("firstNameFeedback");
+
+            firstNameInput.addEventListener("input", function () {
+                const value = firstNameInput.value.trim();
+                if (value.length < 3) {
+                    firstNameFeedback.textContent = "Poor";
+                } else {
+                    firstNameFeedback.textContent = "";
+                }
+            });
+
+            const lastNameInput = document.getElementById("lastName");
+            const lastNameFeedback = document.getElementById("lastNameFeedback");
+
+            lastNameInput.addEventListener("input", function () {
+                const value = lastNameInput.value.trim();
+                if (value.length < 3) {
+                    lastNameFeedback.textContent = "Poor";
+                } else {
+                    lastNameFeedback.textContent = "";
+                }
+            });
+
+            const emailInput = document.getElementById("email");
+            const emailFeedback = document.getElementById("emailFeedback");
+
+            emailInput.addEventListener("input", function () {
+                const value = emailInput.value.trim();
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailRegex.test(value)) {
+                    emailFeedback.textContent = "Poor";
+                } else {
+                    emailFeedback.textContent = "";
+                }
+            });
+
+            const passwordInput = document.getElementById("password");
+            const passwordFeedback = document.getElementById("passwordFeedback");
+
+            passwordInput.addEventListener("input", function () {
+                const value = passwordInput.value;
+                if (value.length < 6) {
+                    passwordFeedback.textContent = "Poor";
+                } else {
+                    passwordFeedback.textContent = "";
+                }
+            });
+
+            const rePasswordInput = document.getElementById("rePassword");
+            const rePasswordFeedback = document.getElementById("rePasswordFeedback");
+
+            rePasswordInput.addEventListener("input", function () {
+                const passwordValue = passwordInput.value;
+                const rePasswordValue = rePasswordInput.value;
+                if (rePasswordValue !== passwordValue) {
+                    rePasswordFeedback.textContent = "Poor or mismatch";
+                } else {
+                    rePasswordFeedback.textContent = "";
+                }
+            });
+
+            const ageInput = document.getElementById("age");
+            const ageFeedback = document.getElementById("ageFeedback");
+
+            ageInput.addEventListener("input", function () {
+                const value = ageInput.value;
+                if (isNaN(value) || value < 18 || value > 99) {
+                    ageFeedback.textContent = "Poor";
+                } else {
+                    ageFeedback.textContent = "";
+                }
+            });
+
+            const phoneNumberInput = document.getElementById("phoneNumber");
+            const phoneNumberFeedback = document.getElementById("phoneNumberFeedback");
+
+            phoneNumberInput.addEventListener("input", function () {
+                const value = phoneNumberInput.value;
+                const phoneRegex = /^[0-9]{10}$/;
+                if (!phoneRegex.test(value)) {
+                    phoneNumberFeedback.textContent = "Poor";
+                } else {
+                    phoneNumberFeedback.textContent = "";
+                }
+            });
+
+            const addressInput = document.getElementById("address");
+            const addressFeedback = document.getElementById("addressFeedback");
+
+            addressInput.addEventListener("input", function () {
+                const value = addressInput.value.trim();
+                if (value.length < 10) {
+                    addressFeedback.textContent = "Poor";
+                } else {
+                    addressFeedback.textContent = "";
+                }
+            });
+
+            const stateInput = document.getElementById("state");
+            const stateFeedback = document.getElementById("stateFeedback");
+
+            stateInput.addEventListener("input", function () {
+                const value = stateInput.value.trim();
+                if (value.length < 3) {
+                    stateFeedback.textContent = "Poor";
+                } else {
+                    stateFeedback.textContent = "";
+                }
+            });
+
+            const countryInput = document.getElementById("country");
+            const countryFeedback = document.getElementById("countryFeedback");
+
+            countryInput.addEventListener("input", function () {
+                const value = countryInput.value.trim();
+                if (value.length < 3) {
+                    countryFeedback.textContent = "Poor";
+                } else {
+                    countryFeedback.textContent = "";
+                }
+            });
+
+            const declarationCheckbox = document.getElementById("declaration");
+
+            declarationCheckbox.addEventListener("change", function () {
+                const isChecked = declarationCheckbox.checked;
+                if (!isChecked) {
+                    alert("You must agree to the declaration.");
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

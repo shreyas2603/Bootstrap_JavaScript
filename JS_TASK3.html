@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <label for="num1">Enter the first number:</label>
+        <input type="number" id="num1" placeholder="Enter the first number">
+        
+        <label for="num2">Enter the second number:</label>
+        <input type="number" id="num2" placeholder="Enter the second number">
+        
+        <button id="multiplyButton">Multiply</button>
+        <button id="divideButton">Divide</button>
+        
+        <p id="output">The Result is: </p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const num1Input = document.getElementById("num1");
+            const num2Input = document.getElementById("num2");
+            const multiplyButton = document.getElementById("multiplyButton");
+            const divideButton = document.getElementById("divideButton");
+            const output = document.getElementById("output");
+
+            multiplyButton.addEventListener("click", function () {
+                const num1 = parseFloat(num1Input.value);
+                const num2 = parseFloat(num2Input.value);
+                const result = num1 * num2;
+                output.textContent = `The Result is: ${result}`;
+            });
+
+            divideButton.addEventListener("click", function () {
+                const num1 = parseFloat(num1Input.value);
+                const num2 = parseFloat(num2Input.value);
+                if (num2 === 0) {
+                    output.textContent = "The Result is: Division by zero is not allowed.";
+                } else {
+                    const result = num1 / num2;
+                    output.textContent = `The Result is: ${result}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alphabetical Sorting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alphabetical Sorting</h1>
+        <label for="textInput">Enter a string:</label>
+        <input type="text" id="textInput" placeholder="Enter a string">
+        <button id="sortButton">Sort</button>
+        <p id="output">Sorted String: </p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const textInput = document.getElementById("textInput");
+            const sortButton = document.getElementById("sortButton");
+            const output = document.getElementById("output");
+
+            sortButton.addEventListener("click", function () {
+                const inputValue = textInput.value;
+                const sortedValue = sortString(inputValue);
+                output.textContent = `Sorted String: ${sortedValue}`;
+            });
+
+            function sortString(str) {
+                return str.split('').sort().join('');
+            }
+        });
+    </script>
+</body>
+</html>

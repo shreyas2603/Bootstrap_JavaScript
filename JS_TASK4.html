@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Date and Time</title>
+</head>
+<body>
+    <div>
+        <h1>Current Date and Time</h1>
+        <button id="showDateButton">Show Date</button>
+        <br><br>
+        <button id="showTimeButton">Show Time</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const showDateButton = document.getElementById("showDateButton");
+            const showTimeButton = document.getElementById("showTimeButton");
+            const output = document.getElementById("output");
+
+            showDateButton.addEventListener("click", function () {
+                const currentDate = new Date();
+                const day = currentDate.getDate();
+                const month = currentDate.toLocaleString('default', { month: 'long' });
+                const year = currentDate.getFullYear();
+                output.textContent = `${day}/${month}/${year}`;
+            });
+
+            showTimeButton.addEventListener("click", function () {
+                const currentTime = new Date();
+                output.textContent = `${currentTime.toString()}`;
+            });
+        });
+    </script>
+</body>
+</html>

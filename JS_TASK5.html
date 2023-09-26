@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid red;
+            border-radius: 3px;
+
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <p>Name :</p>
+        <input type="text" id="name" name="name">
+        <p class="error-message" id="nameError"></p>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <p class="error-message" id="emailError"></p>
+
+        <label for="website">Website:</label>
+        <input type="url" id="website" name="website">
+        <p class="error-message" id="websiteError"></p>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+        <p class="error-message" id="messageError"></p>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const website = document.getElementById("website").value;
+            const message = document.getElementById("message").value;
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const websiteError = document.getElementById("websiteError");
+            const messageError = document.getElementById("messageError");
+
+            // Reset previous error messages
+            nameError.textContent = "";
+            emailError.textContent = "";
+            websiteError.textContent = "";
+            messageError.textContent = "";
+
+            let isValid = true;
+
+            if (name.trim() === "") {
+                nameError.textContent = "This field is required";
+                isValid = false;
+            }
+
+            if (email.trim() === "") {
+                emailError.textContent = "A valid email address is required";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = "Invalid email address";
+                isValid = false;
+            }
+
+            if (website.trim() === "") {
+                websiteError.textContent = "A valid website address is required";
+                isValid = false;
+            } else if (!isValidUrl(website)) {
+                websiteError.textContent = "Invalid URL";
+                isValid = false;
+            }
+
+            if (message.trim() === "") {
+                messageError.textContent = "This field is required";
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Form is valid, you can submit it here
+                alert("Form is valid. Submitting...");
+            }
+        }
+
+        function isValidEmail(email) {
+            // Basic email validation, you can use a more robust validation method
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function isValidUrl(url) {
+            // Basic URL validation, you can use a more robust validation method
+            const urlPattern = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+            return urlPattern.test(url);
+        }
+    </script>
+</body>
+</html>
